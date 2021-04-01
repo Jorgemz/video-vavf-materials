@@ -42,7 +42,10 @@ struct ContentView: View {
     VStack {
       List {
         ForEach(0 ..< videos.count, id: \.self) { index in
-          Text("Video Clip \(index + 1)")
+          HStack {
+            Thumbnail(url: videos[index])
+            Text("Video Clip \(index + 1)")
+          }
         }
       }
       HStack {

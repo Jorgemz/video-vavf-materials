@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09069CF226157E6D001B4E9B /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09069CF126157E6D001B4E9B /* Thumbnail.swift */; };
 		09FBF37A2615324C00C88ECB /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FBF3792615324C00C88ECB /* PhotoPicker.swift */; };
 		D3F2931A25C076BE00889762 /* QuickPlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F2931925C076BE00889762 /* QuickPlayApp.swift */; };
 		D3F2931C25C076BE00889762 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F2931B25C076BE00889762 /* ContentView.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09069CF126157E6D001B4E9B /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		09FBF3792615324C00C88ECB /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		D3F2931625C076BE00889762 /* QuickPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F2931925C076BE00889762 /* QuickPlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPlayApp.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				D3F2931925C076BE00889762 /* QuickPlayApp.swift */,
 				09FBF3792615324C00C88ECB /* PhotoPicker.swift */,
+				09069CF126157E6D001B4E9B /* Thumbnail.swift */,
 				D3F2931B25C076BE00889762 /* ContentView.swift */,
 				D3F2931D25C076BF00889762 /* Assets.xcassets */,
 				D3F2932225C076BF00889762 /* Info.plist */,
@@ -143,6 +146,7 @@
 			files = (
 				D3F2931C25C076BE00889762 /* ContentView.swift in Sources */,
 				D3F2931A25C076BE00889762 /* QuickPlayApp.swift in Sources */,
+				09069CF226157E6D001B4E9B /* Thumbnail.swift in Sources */,
 				09FBF37A2615324C00C88ECB /* PhotoPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
