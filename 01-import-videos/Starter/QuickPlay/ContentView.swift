@@ -32,12 +32,20 @@
 
 import SwiftUI
 import PhotosUI
+import AVKit
 
 struct ContentView: View {
-
+  
   @State var isSheetPresented = false
   @State var videos = [URL]()
-
+  @State var sheetMode: SheetMode = .picker
+  @State var player: AVPlayer?
+  
+  enum SheetMode {
+    case picker
+    case video
+  }
+  
   var body: some View {
     VStack {
       List {
@@ -45,6 +53,11 @@ struct ContentView: View {
           HStack {
             Thumbnail(url: videos[index])
             Text("Video Clip \(index + 1)")
+          }
+          .onTapGesture {
+            isSheetPresented = true
+            sheetMode = .video
+            player = AVPlayer(url: videos[index])
           }
         }
       }
@@ -61,7 +74,12 @@ struct ContentView: View {
         Spacer()
       }
       .sheet(isPresented: $isSheetPresented) {
-        PhotoPicker(isPresented: $isSheetPresented, videos: $videos)
+        switch(sheetMode) {
+        case .picker:
+          PhotoPicker(isPresented: $isSheetPresented, videos: $videos)
+        case .video:
+          VideoPlayer(player: player)
+        }
       }
     }
   }
