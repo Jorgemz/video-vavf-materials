@@ -58,7 +58,7 @@ struct ContentView: View {
         Spacer()
       }
       .sheet(isPresented: $isSheetPresented) {
-        Text("Import Videos")
+        PhotoPicker(isPresented: $isSheetPresented, videos: $videos)
       }
     }
   }
