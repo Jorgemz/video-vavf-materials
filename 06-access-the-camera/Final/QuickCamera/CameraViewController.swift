@@ -32,12 +32,16 @@
 
 import UIKit
 import AVFoundation
+import os
+import PhotosUI
 
 class CameraViewController: UIViewController {
+  let logger = Logger(subsystem: "com.deserweb.cameraviewcontroller", category: "cameraviewcontroller")
 
   let captureSession = AVCaptureSession()
   var previewLayer: AVCaptureVideoPreviewLayer!
   var activeInput: AVCaptureDeviceInput!
+  let imageOutput = AVCapturePhotoOutput()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,17 +56,21 @@ class CameraViewController: UIViewController {
 
   func setupSession() {
     captureSession.beginConfiguration()
-    guard let camera = AVCaptureDevice.default(for: .video),
-          let mic = AVCaptureDevice.default(for: .audio) else {
+    guard let camera = AVCaptureDevice.default(for: .video)
+          //, let mic = AVCaptureDevice.default(for: .audio)
+    else {
       return
     }
     do {
       let videoInput = try AVCaptureDeviceInput(device: camera)
-      let audioInput = try AVCaptureDeviceInput(device: mic)
-      for input in [videoInput, audioInput] {
-        if captureSession.canAddInput(input) {
-          captureSession.addInput(input)
+      //let audioInput = try AVCaptureDeviceInput(device: mic)
+      //for input in [videoInput, audioInput] {
+        if captureSession.canAddInput(videoInput) {
+          captureSession.addInput(videoInput)
         }
+      //}
+      if captureSession.canAddOutput(imageOutput) {
+        captureSession.addOutput(imageOutput)
       }
       activeInput = videoInput
     } catch {
@@ -119,5 +127,38 @@ class CameraViewController: UIViewController {
     captureSession.addInput(activeInput)
     captureSession.commitConfiguration()
   }
+  
+  public func capturePhoto(flashMode: AVCaptureDevice.FlashMode) {
+    let settings = AVCapturePhotoSettings()
+    settings.isAutoRedEyeReductionEnabled = true
+    let device = activeInput.device
+    if device.hasFlash {
+      if imageOutput.supportedFlashModes.contains(flashMode) {
+        settings.flashMode = flashMode
+      }
+    }
+    imageOutput.capturePhoto(with: settings, delegate: self)
+  }
 
+}
+
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+  func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+    if let error = error {
+      logger.error("\(error.localizedDescription)")
+      return
+    }
+    guard let photoData = photo.fileDataRepresentation() else { return }
+    PHPhotoLibrary.requestAuthorization(for: .addOnly, handler: { status in
+      if status == .authorized {
+        PHPhotoLibrary.shared().performChanges({
+          let request = PHAssetCreationRequest.forAsset()
+          request.addResource(with: .photo, data: photoData, options: nil)
+          
+        }, completionHandler: { success, error in
+          
+        })
+      }
+    })
+  }
 }

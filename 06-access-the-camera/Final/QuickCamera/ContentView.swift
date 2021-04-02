@@ -31,9 +31,13 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import os
+import AVFoundation
 
 struct ContentView: View {
+  let logger = Logger(subsystem: "com.edserweb.content", category: "content")
 
+  @State var flashMode: AVCaptureDevice.FlashMode = .auto
   var cameraView = CameraView()
 
   var body: some View {
@@ -43,12 +47,22 @@ struct ContentView: View {
         VStack {
           HStack {
             Button {
-              print("flash pressed")
+              logger.info("flash pressed")
+              switch flashMode {
+              case .auto:
+                flashMode = .off
+              case .off:
+                flashMode = .on
+              case .on:
+                flashMode = .auto
+              @unknown default:
+                flashMode = .auto
+              }
             } label: {
               HStack {
-                Image(systemName: "bolt")
+                Image(systemName: (flashMode == .auto || flashMode == .on) ? "bolt" : "bolt.slash")
                   .foregroundColor(.white)
-                Text("On")
+                Text(flashMode.description)
                   .foregroundColor(.white)
               }.padding()
             }
@@ -65,7 +79,8 @@ struct ContentView: View {
           HStack {
             Spacer()
             Button {
-              print("take photo")
+              logger.info("take photo")
+              cameraView.takePhoto(flashMode: flashMode)
             } label: {
               Image(systemName: "record.circle")
                 .font(.system(size: 60))
@@ -83,4 +98,19 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+extension AVCaptureDevice.FlashMode {
+  var description: String {
+    switch self {
+    case .auto:
+      return "Auto"
+    case .off:
+      return "Off"
+    case .on:
+      return "On"
+    @unknown default:
+      return "Unknown"
+    }
+  }
 }
