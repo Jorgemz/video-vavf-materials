@@ -46,5 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>The camera needs to take videos and photos for this course.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>The microphone needs to record audio for this course.</string>
 </dict>
 </plist>

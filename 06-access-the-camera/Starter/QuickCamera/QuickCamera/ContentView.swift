@@ -31,17 +31,21 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import os
 
 struct ContentView: View {
+  let logger = Logger(subsystem: "com.deserweb.content", category: "content")
+  
+  var cameraView = CameraView()
+  
   var body: some View {
     VStack {
       ZStack {
-        EmptyView()
-          .foregroundColor(.black)
+        cameraView
         VStack {
           HStack {
             Button {
-              print("flash pressed")
+              logger.info("flash pressed")
             } label: {
               HStack {
                 Image(systemName: "bolt")
@@ -52,7 +56,8 @@ struct ContentView: View {
             }
             Spacer()
             Button {
-              print("change camera")
+              logger.info("change camera")
+              cameraView.switchCamera()
             } label: {
               Image(systemName: "arrow.triangle.2.circlepath.camera")
                 .padding()
@@ -63,7 +68,7 @@ struct ContentView: View {
           HStack {
             Spacer()
             Button {
-              print("take photo")
+              logger.info("take photo")
             } label: {
               Image(systemName: "record.circle")
                 .font(.system(size: 60))
@@ -78,7 +83,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }

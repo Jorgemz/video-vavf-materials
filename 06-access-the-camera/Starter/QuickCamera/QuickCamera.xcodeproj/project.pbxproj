@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09069CFB2616348D001B4E9B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09069CFA2616348D001B4E9B /* CameraViewController.swift */; };
+		09069CFE2616394B001B4E9B /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09069CFD2616394B001B4E9B /* CameraView.swift */; };
 		D339619425CE17E500A5B699 /* QuickCameraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619325CE17E500A5B699 /* QuickCameraApp.swift */; };
 		D339619625CE17E500A5B699 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339619525CE17E500A5B699 /* ContentView.swift */; };
 		D339619825CE17E800A5B699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D339619725CE17E800A5B699 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09069CFA2616348D001B4E9B /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		09069CFD2616394B001B4E9B /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		D339619025CE17E500A5B699 /* QuickCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D339619325CE17E500A5B699 /* QuickCameraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCameraApp.swift; sourceTree = "<group>"; };
 		D339619525CE17E500A5B699 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				D339619325CE17E500A5B699 /* QuickCameraApp.swift */,
+				09069CFA2616348D001B4E9B /* CameraViewController.swift */,
+				09069CFD2616394B001B4E9B /* CameraView.swift */,
 				D339619525CE17E500A5B699 /* ContentView.swift */,
 				D339619725CE17E800A5B699 /* Assets.xcassets */,
 				D339619C25CE17E800A5B699 /* Info.plist */,
@@ -140,6 +146,8 @@
 			files = (
 				D339619625CE17E500A5B699 /* ContentView.swift in Sources */,
 				D339619425CE17E500A5B699 /* QuickCameraApp.swift in Sources */,
+				09069CFB2616348D001B4E9B /* CameraViewController.swift in Sources */,
+				09069CFE2616394B001B4E9B /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +277,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCamera/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QuickCamera/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -291,7 +299,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickCamera/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QuickCamera/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
