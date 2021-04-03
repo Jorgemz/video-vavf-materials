@@ -40,11 +40,14 @@ struct ContentView: View {
   @State var videos = [URL]()
   @State var sheetMode: SheetMode = .picker
   @State var selectedVideo = -1
+  
+  var merger = MergeExport()
 
   enum SheetMode {
     case picker
     case video
     case merge
+    case preview
   }
 
   var body: some View {
@@ -75,8 +78,9 @@ struct ContentView: View {
         .padding(.leading)
         Spacer()
         Button {
+          merger.videoURLS = videos
           isSheetPresented = true
-          sheetMode = .merge
+          sheetMode = .preview
         } label: {
           Image(systemName: "list.and.film")
             .font(.largeTitle)
@@ -101,6 +105,8 @@ struct ContentView: View {
           AVMoviePlayer(url: videos[selectedVideo])
         case .merge:
           AVMoviePlayer(urls: videos)
+        case .preview:
+          AVMoviePlayer(playerItem: merger.previewMerge())
         }
       }
     }

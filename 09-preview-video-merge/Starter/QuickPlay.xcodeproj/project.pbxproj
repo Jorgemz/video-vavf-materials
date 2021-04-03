@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		098AFABA2618E191007D2EAC /* MergeExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098AFAB92618E191007D2EAC /* MergeExport.swift */; };
 		D3944BD425D461DB00F2742F /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3944BD325D461DB00F2742F /* Thumbnail.swift */; };
 		D3944BD725D4674F00F2742F /* AVMoviePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3944BD625D4674F00F2742F /* AVMoviePlayer.swift */; };
 		D3AF66BD25D34826000D675B /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF66BC25D34826000D675B /* PhotoPicker.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		098AFAB92618E191007D2EAC /* MergeExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeExport.swift; sourceTree = "<group>"; };
 		D3944BD325D461DB00F2742F /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		D3944BD625D4674F00F2742F /* AVMoviePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVMoviePlayer.swift; sourceTree = "<group>"; };
 		D3AF66BC25D34826000D675B /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				D3F2931F25C076BF00889762 /* Preview Content */,
 				D3944BD325D461DB00F2742F /* Thumbnail.swift */,
 				D3944BD625D4674F00F2742F /* AVMoviePlayer.swift */,
+				098AFAB92618E191007D2EAC /* MergeExport.swift */,
 			);
 			path = QuickPlay;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				D3944BD725D4674F00F2742F /* AVMoviePlayer.swift in Sources */,
 				D3F2931A25C076BE00889762 /* QuickPlayApp.swift in Sources */,
 				D3944BD425D461DB00F2742F /* Thumbnail.swift in Sources */,
+				098AFABA2618E191007D2EAC /* MergeExport.swift in Sources */,
 				D3AF66BD25D34826000D675B /* PhotoPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +213,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -264,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -281,10 +285,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickPlay/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QuickPlay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,10 +307,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickPlay/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QuickPlay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

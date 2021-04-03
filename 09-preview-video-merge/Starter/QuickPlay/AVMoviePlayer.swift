@@ -44,6 +44,10 @@ struct AVMoviePlayer: UIViewControllerRepresentable {
   init(url: URL) {
     player = AVPlayer(url: url)
   }
+  
+  init(playerItem: AVPlayerItem) {
+    player = AVPlayer(playerItem: playerItem)
+  }
 
   init(urls: [URL]) {
     var items = [AVPlayerItem]()
