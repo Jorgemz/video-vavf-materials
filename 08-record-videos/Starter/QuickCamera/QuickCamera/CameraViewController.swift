@@ -33,13 +33,27 @@
 import UIKit
 import AVFoundation
 import SwiftUI
+import os
+import PhotosUI
 
 class CameraViewController: UIViewController {
+  let logger = Logger(subsystem: "com.dserweb.cameraviewcontroller", category: "cameraviewcontroller")
 
   let captureSession = AVCaptureSession()
   var previewLayer: AVCaptureVideoPreviewLayer!
   var activeInput: AVCaptureDeviceInput!
+  let movieOutput = AVCaptureMovieFileOutput()
 
+  lazy var tempURL: URL? = {
+    let isEmpty = NSTemporaryDirectory().isEmpty
+    let directory = NSTemporaryDirectory() as NSString
+    if !isEmpty {
+      let path = directory.appendingPathComponent("video.mov")
+      return URL(fileURLWithPath: path)
+    }
+    return nil
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -70,9 +84,10 @@ class CameraViewController: UIViewController {
       }
       activeInput = videoInput
     } catch {
-      print("Error setting device input: \(error)")
+      logger.error("Error setting device input: \(error.localizedDescription)")
       return
     }
+    captureSession.addOutput(movieOutput)
     captureSession.commitConfiguration()
   }
 
@@ -124,4 +139,49 @@ class CameraViewController: UIViewController {
     }
   }
 
+  public func captureVideo() {
+    guard let connection = movieOutput.connection(with: .video) else { return }
+    if connection.isVideoStabilizationSupported {
+      connection.preferredVideoStabilizationMode = .auto
+    }
+    let device = activeInput.device
+    if device.isSmoothAutoFocusEnabled {
+      do {
+        try device.lockForConfiguration()
+        device.isSmoothAutoFocusEnabled = true
+        device.unlockForConfiguration()
+      } catch {
+        print("error: \(error)")
+      }
+    }
+    guard let outUrl = tempURL else { return }
+    movieOutput.startRecording(to: outUrl, recordingDelegate: self)
+  }
+  
+  public func stopRecording() {
+    if movieOutput.isRecording {
+      movieOutput.stopRecording()
+    }
+  }
+}
+
+// MARK: - AVCaptureFileOutputRecordingDelegate
+extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
+  func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+    if let error = error {
+      logger.error("error: \(error.localizedDescription)")
+    } else {
+      PHPhotoLibrary.requestAuthorization { status in
+        if status == .authorized {
+          PHPhotoLibrary.shared().performChanges {
+            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputFileURL)
+          } completionHandler: { (success, error) in
+            
+          }
+        }
+      }
+    }
+    
+    
+  }
 }

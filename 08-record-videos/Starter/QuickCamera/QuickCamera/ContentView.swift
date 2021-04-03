@@ -31,9 +31,12 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import os
 
 struct ContentView: View {
-
+  let logger = Logger(subsystem: "com.deserweb.contentview", category: "contentview")
+  
+  @State var isRecording = false
   var cameraView = CameraView()
 
   var body: some View {
@@ -55,11 +58,17 @@ struct ContentView: View {
           HStack {
             Spacer()
             Button {
-              print("take photo")
+              logger.info("record video")
+              if !isRecording {
+                cameraView.startRecording()
+              } else {
+                cameraView.stopRecording()
+              }
+              isRecording.toggle()
             } label: {
               Image(systemName: "record.circle")
                 .font(.system(size: 60))
-                .foregroundColor(.white)
+                .foregroundColor(isRecording ? Color.red : Color.white)
             }
             Spacer()
           }

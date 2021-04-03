@@ -53,7 +53,13 @@ struct CameraView: UIViewControllerRepresentable {
   public func switchCamera() {
     cameraViewController.switchCamera()
   }
+  
+  public func startRecording () {
+    cameraViewController.startSession()
+  }
 
-
+  public func stopRecording() {
+    cameraViewController.stopRecording()
+  }
 
 }
