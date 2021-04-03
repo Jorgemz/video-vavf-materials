@@ -41,8 +41,8 @@ struct ContentView: View {
   @State var sheetMode: SheetMode = .picker
   @State var selectedVideo = -1
   
-  var merger = MergeExport()
-
+  @ObservedObject var merger = MergeExport()
+  
   enum SheetMode {
     case picker
     case video
@@ -62,6 +62,17 @@ struct ContentView: View {
             isSheetPresented = true
             sheetMode = .video
             selectedVideo = index
+          }
+        }
+        if let exportUrl = merger.exportUrl {
+          HStack {
+            Thumbnail(url: exportUrl)
+            Text("Merget Export")
+          }
+          .onTapGesture {
+            selectedVideo = -1
+            isSheetPresented = true
+            sheetMode = .video
           }
         }
       }
@@ -89,7 +100,8 @@ struct ContentView: View {
         .padding(.trailing)
         Spacer()
         Button {
-
+          merger.videoURLS = videos
+          merger.mergeAndExxportVideo()
         } label: {
           Image(systemName: "film")
             .font(.largeTitle)
@@ -102,7 +114,7 @@ struct ContentView: View {
         case .picker:
           PhotoPicker(isPresented: $isSheetPresented, videos: $videos)
         case .video:
-          AVMoviePlayer(url: videos[selectedVideo])
+          AVMoviePlayer(url: (selectedVideo == -1) ? merger.exportUrl! : videos[selectedVideo])
         case .merge:
           AVMoviePlayer(urls: videos)
         case .preview:
